@@ -1,0 +1,13 @@
+//script 
+
+<script>
+       // WRITE THE VALIDATION SCRIPT.
+       function ABC(evt) {
+
+           if ((event.keyCode > 64 && event.keyCode < 91) || (event.keyCode > 96 && event.keyCode < 123) || event.keyCode == 8)
+               return true;
+           return false;
+       }
+</script>
+
+ <asp:TextBox ID="txt_firstname" runat="server" onkeypress="javascript:return ABC(event)"></asp:TextBox>

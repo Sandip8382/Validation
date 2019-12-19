@@ -1,0 +1,34 @@
+
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+
+
+
+    $(document).ready(function () {
+
+        $("#WCDistributerHomeSearch_datepicker7").datepicker({
+            dateFormat: "m/dd/yy",
+            minDate: 0,
+            onSelect: function (date) {
+                var date2 = $('#WCDistributerHomeSearch_datepicker7').datepicker('getDate');
+                date2.setDate(date2.getDate() + 1);
+                $('#WCDistributerHomeSearch_datepicker2').datepicker('setDate', date2);
+                //sets minDate to dt1 date + 1
+                $('#WCDistributerHomeSearch_datepicker2').datepicker('option', 'minDate', date2);
+            }
+        });
+        $('#WCDistributerHomeSearch_datepicker2').datepicker({
+            dateFormat: "m/dd/yy",
+            onClose: function () {
+                var dt1 = $('#WCDistributerHomeSearch_datepicker7').datepicker('getDate');
+                var dt2 = $('#WCDistributerHomeSearch_datepicker2').datepicker('getDate');
+                //check to prevent a user from entering a date below date of dt1
+                if (dt2 <= dt1) {
+                    var minDate = $('#WCDistributerHomeSearch_datepicker2').datepicker('option', 'minDate');
+                    $('#WCDistributerHomeSearch_datepicker2').datepicker('setDate', minDate);
+                }
+            }
+        });
+    });
